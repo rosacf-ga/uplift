@@ -12,7 +12,7 @@ const reviewSchema = new Schema({
 })
 
 const programSchema = new Schema({
-  title: {type: String, required: true}, 
+  programName: {type: String, required: true}, 
   city: {type: String, required: true}, 
   state: {
     type: String,
