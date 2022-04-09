@@ -1,3 +1,6 @@
+@import "compass/css3";
+
+
 .form-section{
   margin: 10px 0;
 }
@@ -17,4 +20,12 @@ flex-flow: wrap;
   height: 230px;
   border: 1px solid #ccc;
   margin-bottom: 50px;
+}
+
+.radio-group {
+  display: inline-block;
+  text-align: center;
+}
+.radio-group label {
+  display: block;
 }
