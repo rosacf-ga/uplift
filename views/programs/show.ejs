@@ -1,4 +1,60 @@
 <%- include('../partials/header') %>
+<h3><%= program.programName %></h3>
+<div><%= program.city %>, <%= program.state %></div>
 
+<section>
+  <h4>Description</h4>
+  <div><%= program.description %></div>
+</section>
+
+<section>
+  <h4>For More Information</h4>
+  <div>
+    <a href="<%= program.website %>" target="_blank"><%= program.website %></a>
+  </div>
+</section>
+
+<div><a href="">Edit Program Information</a></div>
+
+<h3>Reviews</h3>
+<form action="/programs/<%= program._id %>/reviews " method="POST">
+  <div class="review-section">
+    <div>Your Rating</div>
+    <div class="rating">
+      <div class="radio-group">
+        <input type="radio" name="rating" value="1" checked />
+        <label for="one"><i class="fa fa-star"></i>1</label>
+      </div>
+      <div class="radio-group">
+        <input type="radio" name="rating" value="2" />
+        <label for="two"><i class="fa fa-star"></i>2</label>
+      </div>
+      <div class="radio-group">
+        <input type="radio" name="rating" value="3" />
+        <label for="three"><i class="fa fa-star"></i>3</label>
+      </div>
+      <div class="radio-group">
+        <input type="radio" name="rating" value="4" />
+        <label for="four"><i class="fa fa-star"></i>4</label>
+      </div>
+      <div class="radio-group">
+        <input type="radio" name="rating" value="5" />
+        <label for="five"><i class="fa fa-star"></i>5</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="review-section">
+    <div class="review-label">
+      <label>Comments</label>
+    </div>
+    <div class="review-input">
+      <textarea name="content" cols="30" rows="6"></textarea>
+    </div>
+  </div>
+  <div>
+    <input type="submit" value="Add Review" />
+  </div>
+</form>
 
 <%- include('../partials/footer') %>
