@@ -16,9 +16,7 @@
 
 <% if (user && user._id.equals(program.user)) { %>
   <div class="edit-delete">
-    <form action="/programs/<%= program._id %>?_method=PUT" method="POST">
-      <button type="submit">Edit Program</button>
-    </form>
+    <button type="submit"><a href="/programs/<%= program._id %>/edit">Edit Program</a></button>
     <form action="/programs/<%= program._id %>?_method=DELETE" method="POST">
       <button type="submit">Delete Program</button>
     </form>
