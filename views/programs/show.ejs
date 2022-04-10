@@ -14,14 +14,17 @@
   </div>
 </section>
 
-<div class="edit-delete">
-<form action="/programs/<%= program._id %>?_method=PUT" method="POST">
-  <button type="submit">Edit Program</button>
-</form>
-<form action="/programs/<%= program._id %>?_method=DELETE" method="POST">
-  <button type="submit">Delete Program</button>
-</form>
-</div>
+<% if (user && user._id.equals(program.user)) { %>
+  <div class="edit-delete">
+    <form action="/programs/<%= program._id %>?_method=PUT" method="POST">
+      <button type="submit">Edit Program</button>
+    </form>
+    <form action="/programs/<%= program._id %>?_method=DELETE" method="POST">
+      <button type="submit">Delete Program</button>
+    </form>
+    </div>
+<% } %>
+
 
 <h4>Leave a Review</h4>
 <form action="/programs/<%= program._id %>/reviews" method="POST">
