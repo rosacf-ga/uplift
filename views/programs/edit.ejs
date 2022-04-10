@@ -1,0 +1,7 @@
+<%- include('../partials/header') %> 
+<h2>Edit <%= program.programName %> </h2>
+
+<form action="/programs/<%= program._id %>?_method=PUT" method="POST">
+  <button type="submit">Edit Program</button>
+</form>
+<%- include('../partials/footer') %> 
