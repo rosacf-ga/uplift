@@ -30,6 +30,6 @@ flex-flow: wrap;
   display: block;
 }
 
-.edit-delete > form{
+.edit-delete > form {
   display: inline;
 }
