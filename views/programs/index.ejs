@@ -5,9 +5,15 @@
     <div class="card-title"><%= p.programName %></div>
     <div><%= p.city %>, <%= p.state %></div>
     <div><a href="/programs/<%= p._id %> ">Learn More</a></div>
-   
+
+    <% let total = 0 %> 
+    <% p.reviews.forEach(r => { %>
+      <% total += r.rating %>
+      <div>Average Rating<strong> <%= (total /p.reviews.length).toFixed(1) %></strong></div>
+    <% }) %>
   </div>
 <% }) %> 
 </div>
 
 <%- include('../partials/footer') %>
+
