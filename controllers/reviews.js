@@ -8,7 +8,7 @@ module.exports = {
 function create(req,res){
   //finds movie from database
   Program.findById(req.params.id, function(err, program){
-    //assigns user and userName to req.user properties
+    //assigns req.user properties to user and userName
     req.body.user = req.user._id;
     req.body.userName = req.user.name;
     //review content is pushed into reviews array
@@ -26,6 +26,7 @@ function deleteReview(req, res){
     const review = program.reviews.id(req.params.id); 
     //if user isn't the one who made the review, they cannot delete and will be redirected
     if(!review.user.equals(req.user._id)) return res.redirect(`/programs/p${program._id}`);
+    //if user is the one who made review:
     review.remove();
     program.save(function(err){
       if(err) next(err) //will pass it to the err handler
