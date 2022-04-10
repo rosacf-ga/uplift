@@ -14,13 +14,20 @@
   </div>
 </section>
 
-<div><a href="">Edit Program Information</a></div>
+<div class="edit-delete">
+<form action="/programs/<%= program._id %>?_method=PUT" method="POST">
+  <button type="submit">Edit Program</button>
+</form>
+<form action="/programs/<%= program._id %>?_method=DELETE" method="POST">
+  <button type="submit">Delete Program</button>
+</form>
+</div>
 
-<h3>Reviews</h3>
-<form action="/programs/<%= program._id %>/reviews " method="POST">
-  <div class="review-section">
+<h4>Leave a Review</h4>
+<form action="/programs/<%= program._id %>/reviews" method="POST">
+  <div class="review-form">
     <div>Your Rating</div>
-    <div class="rating">
+    <div class="rating-form">
       <div class="radio-group">
         <input type="radio" name="rating" value="1" checked />
         <label for="one"><i class="fa fa-star"></i>1</label>
@@ -44,7 +51,7 @@
     </div>
   </div>
 
-  <div class="review-section">
+  <div class="review-form">
     <div class="review-label">
       <label>Comments</label>
     </div>
@@ -53,8 +60,49 @@
     </div>
   </div>
   <div>
-    <input type="submit" value="Add Review" />
+    <input type="submit" value="Add Review">
   </div>
 </form>
+
+<div class="all-reviews">
+  <h4>All Reviews</h4>
+  <% if (program.reviews.length) { %>
+    <table>
+      <tbody>
+        <% let total = 0 %>
+        <% program.reviews.forEach(function(r) { %>
+          <% total += r.rating %>
+          <tr>
+            <td class="review-rating"><%= r.rating %>/5</td>
+          </tr>
+          <tr>
+            <td class="review-date"><strong>Submitted</strong> <%= r.createdAt.toLocaleDateString() %></td>
+          </tr>
+          <tr>
+            <td class="review-user"><strong>By</strong> <%= r.userName %> </td>
+          </tr>
+          <tr>
+            <td class="review-content"><%= r.content %></td>
+          </tr>
+          <tr>
+            <td>
+              <% if (user && user._id.equals(r.user)) { %>
+                <form action="/reviews/<%= r._id %>?_method=DELETE" method="POST">
+                  <button type="submit">X</button>
+                </form>
+              <% } %>
+            </td>
+          </tr>
+        <% }); %>
+        <tr>
+          <td colspan="2"></td>
+          <td>Average Rating<strong> <%= (total / program.reviews.length).toFixed(1) %></strong></td>
+        </tr>
+      </tbody>
+    </table>
+    <% } else { %>
+      <h5>No Reviews Yet</h5>
+  <% } %>
+</div>
 
 <%- include('../partials/footer') %>
