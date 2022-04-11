@@ -11,8 +11,7 @@
       <% total += r.rating %>
     <% }) %> 
     <% if (p.reviews.length) { %>
-    <div>Average Rating<strong> <%= (total /p.reviews.length).toFixed(1) %></strong>
-    </div>
+    <div>Average Rating<strong> <%= (total /p.reviews.length).toFixed(1) %></strong></div>
     <% } %>
   </div>
   <% }) %>
