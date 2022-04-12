@@ -1,5 +1,5 @@
 <%- include('../partials/header') %> 
-
+<div class="edit-program">
 <form action="/programs/<%= program._id %>?_method=PUT" method="POST">
   <div class="form-section">
     <div class="form-label">
@@ -96,5 +96,6 @@
       <input type="submit" value="Update Program" />
     </div>
   </form>
+</div>
 
 <%- include('../partials/footer') %> 
