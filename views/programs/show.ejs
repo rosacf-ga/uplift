@@ -1,119 +1,115 @@
 <%- include('../partials/header') %>
 <div class="show-container">
-<div class="show-program">
-<div class="show-title">
-<h3><%= program.programName %></h3>
-<div><%= program.city %>, <%= program.state %></div>
-</div>
-
-<section>
-  <h4>Description</h4>
-  <div><%= program.description %></div>
-</section>
-
-<section>
-  <h4>For More Information</h4>
-  <div>
-    <a href="<%= program.website %>" target="_blank"><%= program.website %></a>
-  </div>
-</section>
-
-<% if (user && user._id.equals(program.user)) { %>
-  <div class="edit-delete">
-    <button type="submit"><a href="/programs/<%= program._id %>/edit">Edit Program</a></button>
-    <form action="/programs/<%= program._id %>?_method=DELETE" method="POST">
-      <button type="submit">Delete Program</button>
-    </form>
+  <div class="show-program">
+    <div class="show-title">
+      <h3><%= program.programName %></h3>
+      <div><%= program.city %>, <%= program.state %></div>
     </div>
-<% } %>
 
-<div class="review-flex-container">
-  <div class="left-side">
-<h4>Leave a Review</h4>
-<form action="/programs/<%= program._id %>/reviews" method="POST">
-  <div class="review-form">
-    <div>Your Rating</div>
-    <div class="rating-form">
-      <div class="radio-group">
-        <input type="radio" name="rating" value="1" checked />
-        <label for="one"><i class="fa fa-star"></i>1</label>
+    <section>
+      <h4>Description</h4>
+      <div><%= program.description %></div>
+    </section>
+
+    <section>
+      <h4>For More Information</h4>
+      <div>
+        <a href="<%= program.website %>" target="_blank"
+          ><%= program.website %></a
+        >
       </div>
-      <div class="radio-group">
-        <input type="radio" name="rating" value="2" />
-        <label for="two"><i class="fa fa-star"></i>2</label>
+    </section>
+
+    <% if (user && user._id.equals(program.user)) { %>
+    <div class="edit-delete">
+      <button type="submit">
+        <a href="/programs/<%= program._id %>/edit">Edit Program</a>
+      </button>
+      <form action="/programs/<%= program._id %>?_method=DELETE" method="POST">
+        <button type="submit">Delete Program</button>
+      </form>
+    </div>
+    <% } %>
+
+    <div class="review-flex-container">
+      <div class="left-side">
+        <h4>Leave a Review</h4>
+        <form action="/programs/<%= program._id %>/reviews" method="POST">
+          <div class="review-form">
+            <div>Your Rating</div>
+            <div class="rating-form">
+              <div class="radio-group">
+                <input type="radio" name="rating" value="1" checked />
+                <label for="one"><i class="fa fa-star"></i>1</label>
+              </div>
+              <div class="radio-group">
+                <input type="radio" name="rating" value="2" />
+                <label for="two"><i class="fa fa-star"></i>2</label>
+              </div>
+              <div class="radio-group">
+                <input type="radio" name="rating" value="3" />
+                <label for="three"><i class="fa fa-star"></i>3</label>
+              </div>
+              <div class="radio-group">
+                <input type="radio" name="rating" value="4" />
+                <label for="four"><i class="fa fa-star"></i>4</label>
+              </div>
+              <div class="radio-group">
+                <input type="radio" name="rating" value="5" />
+                <label for="five"><i class="fa fa-star"></i>5</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="review-form">
+            <div class="review-label">
+              <label>Comments</label>
+            </div>
+            <div class="review-input">
+              <textarea name="content" cols="42" rows="5"></textarea>
+            </div>
+          </div>
+          <div>
+            <input type="submit" value="Add Review" />
+          </div>
+        </form>
       </div>
-      <div class="radio-group">
-        <input type="radio" name="rating" value="3" />
-        <label for="three"><i class="fa fa-star"></i>3</label>
-      </div>
-      <div class="radio-group">
-        <input type="radio" name="rating" value="4" />
-        <label for="four"><i class="fa fa-star"></i>4</label>
-      </div>
-      <div class="radio-group">
-        <input type="radio" name="rating" value="5" />
-        <label for="five"><i class="fa fa-star"></i>5</label>
+
+      <div class="right-side">
+        <div class="all-reviews">
+          <h4>All Reviews</h4>
+          <% if (program.reviews.length) { %> <% let total = 0 %> <%
+          program.reviews.forEach(function(r) { %> <% total += r.rating %>
+          <div class="review-container">
+            <div class="review-rating">
+              <%= r.rating %>/5 <img src="/images/star.png" alt="star" />
+            </div>
+            <div class="review-date">
+              <strong>Submitted</strong> <%= r.createdAt.toLocaleDateString() %>
+            </div>
+            <div class="review-user"><strong>By</strong> <%= r.userName %></div>
+            <div class="review-content"><%= r.content %></div>
+            <% if (user && user._id.equals(r.user)) { %>
+            <form action="/reviews/<%= r._id %>?_method=DELETE" method="POST">
+              <button type="submit">
+                <img src="/images/bin.png" alt="bin" />
+              </button>
+            </form>
+            <% } %>
+          </div>
+          <% }); %>
+          <div>
+            Average Rating<strong>
+              <%= (total / program.reviews.length).toFixed(1) %></strong>
+            <img src="/images/star.png" alt="star" />
+          </div>
+          <% } else { %>
+          <div>No Reviews Yet</div>
+          <% } %>
+        </div>
       </div>
     </div>
   </div>
-
-  <div class="review-form">
-    <div class="review-label">
-      <label>Comments</label>
-    </div>
-    <div class="review-input">
-      <textarea name="content" cols="42" rows="5"></textarea>
-    </div>
-  </div>
-  <div>
-    <input type="submit" value="Add Review">
-  </div>
-</form>
-  </div>
-
-<div class="right-side">
-<div class="all-reviews">
-  <h4>All Reviews</h4>
-  <% if (program.reviews.length) { %>
-    <table>
-      <tbody>
-        <% let total = 0 %>
-        <% program.reviews.forEach(function(r) { %>
-          <% total += r.rating %>
-          <tr>
-            <td class="review-rating"><%= r.rating %>/5</td>
-          </tr>
-          <tr>
-            <td class="review-date"><strong>Submitted</strong> <%= r.createdAt.toLocaleDateString() %></td>
-          </tr>
-          <tr>
-            <td class="review-user"><strong>By</strong> <%= r.userName %> </td>
-          </tr>
-          <tr>
-            <td class="review-content"><%= r.content %></td>
-  
-            <td>
-              <% if (user && user._id.equals(r.user)) { %>
-                <form action="/reviews/<%= r._id %>?_method=DELETE" method="POST">
-                  <button type="submit">X</button>
-                </form>
-              <% } %>
-            </td>
-          </tr>
-        <% }); %>
-        <tr>
-          <td>Average Rating<strong> <%= (total / program.reviews.length).toFixed(1) %></strong></td>
-        </tr>
-      </tbody>
-    </table>
-    <% } else { %>
-      <div>No Reviews Yet</div>
-  <% } %>
 </div>
-</div>
-</div>
-</div>
-</div>
-
 
 <%- include('../partials/footer') %>
