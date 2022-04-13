@@ -1,13 +1,14 @@
 const express = require('express');
 const router = express.Router(); 
 const programsCtrl = require('../controllers/programs');
+const isLoggedIn = require('../config/auth');
 
 //localhost:3000/programs/
-router.get('/', programsCtrl.index);
-router.get('/my-programs', programsCtrl.myPrograms);
-router.get('/new', programsCtrl.new);
-router.get('/:id',programsCtrl.show);
-router.get('/:id/edit', programsCtrl.edit);
+router.get('/', isLoggedIn, programsCtrl.index);
+router.get('/my-programs', isLoggedIn, programsCtrl.myPrograms);
+router.get('/new', isLoggedIn, programsCtrl.new);
+router.get('/:id', isLoggedIn, programsCtrl.show);
+router.get('/:id/edit', isLoggedIn, programsCtrl.edit);
 router.post('/', programsCtrl.create);
 router.put('/:id', programsCtrl.update);
 router.delete('/:id', programsCtrl.delete);
