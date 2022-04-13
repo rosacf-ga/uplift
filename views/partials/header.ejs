@@ -1,41 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel='stylesheet' href='/stylesheets/style.css' />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bad+Script&family=Montserrat:wght@500&family=Oleo+Script&family=Poppins:wght@400;700&family=Public+Sans:wght@500&display=swap" rel="stylesheet">
-  <title><%= title %> </title>
-</head>
-<body>
-  <div id="page-container">
-    <div id="content-wrap">
-  <nav>
-    <div>
-      <img src="/images/icon.PNG" alt="">
-    </div>
-    <div>
-      <% if (user) { %> 
-        <a href="/programs">All Programs</a>
-        <a href="/programs/my-programs">My Programs</a>
-        <a href="/programs/new">Add Program</a>
-        <a href="/logout">Log Out</a>
-      <% } else { %>
-        <a href="/auth/google">Log In</a>
-      <% } %> 
-    </div>
-  </nav>
-  <header>  
-    <div class="header-container">
-      <img src="/images/header.jpg" alt="header photo">
-      <div class="title">U P L I F T</div>
-    </div>
-  </header>
-  <main> 
-    <% if (user) { %>
-      <h2><%= title %> </h2>
-    <% } %>
-    
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bad+Script&family=Montserrat:wght@500&family=Oleo+Script&family=Poppins:wght@400;700&family=Public+Sans:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <title><%= title %></title>
+  </head>
+  <body>
+    <div id="page-container">
+      <div id="content-wrap">
+        <div class="nav-container">
+        <nav>
+          <div>
+            <img src="/images/icon.PNG" alt="" />
+          </div>
+          <div>
+            <% if (user) { %>
+            <a href="/programs">All Programs</a>
+            <a href="/programs/my-programs">My Programs</a>
+            <a href="/programs/new">Add Program</a>
+            <a href="/logout">Log Out</a>
+            <% } else { %>
+            <a href="/auth/google">Log In</a>
+            <% } %>
+          </div>
+        </nav>
+        </div>
+        <div>
+          <div class="header-container">
+            <img src="/images/header.jpg" alt="header photo" />
+            <div class="title">U P L I F T</div>
+          </div>
+          <main>
+            <% if (user) { %>
+            <h2><%= title %></h2>
+            <% } %>
+
