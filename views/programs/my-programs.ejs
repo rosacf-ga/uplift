@@ -13,7 +13,7 @@
           <% total += r.rating %>
         <% }) %> 
         <% if (p.reviews.length) { %>
-        <div class="bottom-card">Average Rating<strong> <%= (total /p.reviews.length).toFixed(1) %></strong></div>
+          <div class="bottom-card">Average Rating<strong> <%= (total /p.reviews.length).toFixed(1) %> <img src="/images/star.png" alt="star"></strong></div>
         <% } %>
       </div>
     <% }) %> 
