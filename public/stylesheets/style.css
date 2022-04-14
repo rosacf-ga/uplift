@@ -38,6 +38,7 @@ h2 {
   position: relative;
   min-height: 100vh;
   padding-bottom: 6rem;
+  overflow-y: scroll;
 }
 
 #content-wrap {
@@ -97,11 +98,12 @@ nav a:hover {
 .search-bar {
   display: flex; 
   justify-content: center;
-  margin: -14px auto 16px;
+  margin: -14px auto 20px;
 }
 
 .search-bar input[type=submit] {
-  width: 50px;
+  width: 40px;
+  border-radius: 4px;
 }
 
 .card-title, .card span, .show-title h3, .show-title span {
@@ -293,7 +295,8 @@ input[type=submit] {
   text-align: center;
   font-size: 12px;
   padding: 20px 0;
-  /* border: 2px red solid; */
+  border: 2px red solid;
+  background-color: white;
 }
 
 footer a {
