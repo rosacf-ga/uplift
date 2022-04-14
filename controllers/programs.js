@@ -28,6 +28,7 @@ function myPrograms(req, res){
 }
 
 function searchState(req, res){
+  //make query object to use with Program.find if user has submitted a state in search bar
   let programQuery = req.query.state ? {state: new RegExp(req.query.state, 'i')} : {};
   Program.find(programQuery, function(err, programs){
     res.render('programs/index', {programs, title: `Programs in ${req.query.state}`, nameSearch: req.query.state});
