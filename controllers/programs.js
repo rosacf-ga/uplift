@@ -13,7 +13,6 @@ module.exports = {
 };
 
 function index(req, res) {
-  console.log(req.user, "<-req.user");
   //finds/will display all programs
   Program.find({}, function (err, programs) {
     res.render("programs/index", { programs, title: "All Programs" });
@@ -43,7 +42,6 @@ function create(req, res) {
   const program = new Program(req.body);
   //assigns req.users unique id to user field in program schema
   program.user = req.user._id;
-  console.log(program);
   //.save tracks changes in mongoose
   program.save(function (err) {
     if (err) return res.redirect("/programs/new");
