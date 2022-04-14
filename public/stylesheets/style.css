@@ -24,6 +24,11 @@ h2 {
   padding-top: 0;
 }
 
+.log-in {
+  width: 25px;
+  margin: 0 10px -5px 5px;;
+}
+
 .welcome {
   align-items: center;
   text-align: center;
@@ -126,10 +131,10 @@ nav a:hover {
 }
 
 .row {
-display: flex;
-justify-content: space-around;
-flex-flow: wrap;
-gap: 50px;
+  display: flex;
+  justify-content: space-around;
+  flex-flow: wrap;
+  gap: 50px;
 }
 
 .card {
@@ -250,7 +255,6 @@ input[type=submit] {
   padding: 0;
 }
 
-
 .review-date, .review-user {
   font-size: 12px;
   margin-bottom: -2px;
@@ -295,8 +299,6 @@ input[type=submit] {
   text-align: center;
   font-size: 12px;
   padding: 20px 0;
-  border: 2px red solid;
-  background-color: white;
 }
 
 footer a {
