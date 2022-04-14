@@ -3,7 +3,7 @@
   <div class="show-program">
     <div class="show-title">
       <h3><%= program.programName %></h3>
-      <div class="location"><%= program.city %>, <%= program.state %></div>
+      <div class="location"><span><%= program.city %></span>, <%= program.state %></div>
     </div>
 
     <section>
@@ -31,7 +31,7 @@
     </div>
     <% } %>
 
-    <div class="review-flex-container">
+    <div class="review-grid-container">
       <div class="left-side">
         <h4>Leave a Review</h4>
         <form action="/programs/<%= program._id %>/reviews" method="POST">
