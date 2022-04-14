@@ -3,6 +3,7 @@ const Program = require("../models/program");
 module.exports = {
   index,
   myPrograms,
+  searchState,
   new: newProgram,
   create,
   show,
@@ -24,6 +25,13 @@ function myPrograms(req, res){
   Program.find({user: req.user._id}, function(err, programs){
     res.render("programs/my-programs", {programs, title: "My Programs"});
   })
+}
+
+function searchState(req, res){
+  let programQuery = req.query.state ? {state: new RegExp(req.query.state, 'i')} : {};
+  Program.find(programQuery, function(err, programs){
+    res.render('programs/index', {programs, title: `Programs in ${req.query.state}`, nameSearch: req.query.state});
+  });
 }
 
 function newProgram(req, res) {

@@ -6,6 +6,7 @@ const isLoggedIn = require('../config/auth');
 //localhost:3000/programs/
 router.get('/', isLoggedIn, programsCtrl.index);
 router.get('/my-programs', isLoggedIn, programsCtrl.myPrograms);
+router.get('/location', isLoggedIn, programsCtrl.searchState);
 router.get('/new', isLoggedIn, programsCtrl.new);
 router.get('/:id', isLoggedIn, programsCtrl.show);
 router.get('/:id/edit', isLoggedIn, programsCtrl.edit);
