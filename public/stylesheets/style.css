@@ -342,6 +342,10 @@ footer a:hover {
     margin: 10px 16px;
   }
 
+  .log-in {
+    width: 18px;
+  }
+
   h2 {
     font-size: 20px;
   }
