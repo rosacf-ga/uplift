@@ -7,7 +7,7 @@ Additionally, logged in users can leave reviews for any program on the page, cre
 
 Visit Uplift [here](https://uplift-mental-health.herokuapp.com/)
 
-Check out my Trello planning board [here](https://trello.com/invite/b/637pQbk2/bcbae2a33411ed3f729702e053197f2c/project-2)
+Check out my Trello planning board [here](https://trello.com/b/637pQbk2/project-2)
 # 
 ## **Screenshots**
 ![Log in page](./public/images/login.png)
